@@ -72,6 +72,8 @@ strings ~/anaconda3/envs/ktransformers/lib/libstdc++.so.6 | grep GLIBCXX
 sudo apt install libtbb-dev libssl-dev libcurl4-openssl-dev libaio1 libaio-dev libfmt-dev libgflags-dev zlib1g-dev patchelf
 ```
 
+NOTE: on ubuntu 24.04 LTS `libaio1` is `libaio1t64`
+
 ### 3. Build ktransformers
 
 ```bash
@@ -95,7 +97,7 @@ Use our optimized configuration for constrained VRAM:
 
 ```bash
 python ktransformers/server/main.py \
-  --port 10002
+  --port 10002 \
   --model_path <path_to_safetensor_config> \
   --gguf_path <path_to_gguf_files> \
   --optimize_config_path ktransformers/optimize/optimize_rules/DeepSeek-V3-Chat-serve.yaml \
